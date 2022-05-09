@@ -2,14 +2,11 @@
 #include <vector>
 
 int peakFinder (int l, int r, std::vector<int>& nums) {
-    int mid = (l + r) / 2;
-
-    if (nums[mid + 1] > nums[mid])
-        return peakFinder(mid, r, nums);
-    else if (nums[mid - 1] > nums[mid])
-        return peakFinder(l, mid, nums);
-        
-    return mid;
+    if (nums[((l + r) / 2) + 1] > nums[((l + r) / 2)])
+        return peakFinder(((l + r) / 2), r, nums);
+    else if (nums[((l + r) / 2) - 1] > nums[((l + r) / 2)])
+        return peakFinder(l, ((l + r) / 2), nums);
+    return (l + r) / 2;
 }
 
 int peakIndexInMountainArray (std::vector<int>& nums) {
