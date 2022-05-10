@@ -33,19 +33,24 @@ int main () {
 
     std::cout << "Expected true, got " << (hasSum ? "true" : "false") << std::endl;
 
+    twenty->val = 23;
+
+    hasSum = hasPathSum(root, 30);
+
+    std::cout << "Expected false, got " << (hasSum ? "true" : "false") << std::endl;
+
+
     return 0;
 }
 
 bool pathSumChecker (TreeNode * node, int targetSum, int currentSum) {
-    if (node && node->left == nullptr && node->right == nullptr) {
-        return currentSum + node->val == targetSum;
-    }
+    if (!node) return false;
+    if (node->left == nullptr && node->right == nullptr) return currentSum + node->val == targetSum;
     return pathSumChecker(node->left, targetSum, currentSum + node->val) || pathSumChecker(node->right, targetSum, currentSum + node->val);
 }
 
 bool hasPathSum (TreeNode * root, int targetSum) {
-    int currentSum = 0;
-    return pathSumChecker(root, targetSum, currentSum);
+    return pathSumChecker(root, targetSum, 0);
 }
 
 void printLevelOrderOfBinaryTree (TreeNode * root) {
