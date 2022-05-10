@@ -11,14 +11,14 @@ struct TreeNode {
 
 void printLevelOrderOfBinaryTree (TreeNode * root) {
     std::queue<TreeNode*> queue;
-    
+
     queue.push(root);
 
     while (queue.empty() == false) {
         TreeNode * current = queue.front();
         queue.pop();
         std::cout << current->val << " ";
-        
+
         if (current->left)
             queue.push(current->left);
         if (current->right)
