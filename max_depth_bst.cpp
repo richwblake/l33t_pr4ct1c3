@@ -31,11 +31,10 @@ void printLevelOrder (TreeNode * root) {
 }
 
 int maxDepth (TreeNode * root) {
+    if (!root) return 0;
     if (root->left == nullptr && root->right == nullptr) return 1;
     int leftDepth = 1 + maxDepth(root->left);
     int rightDepth = 1 + maxDepth(root->right);
-    std::cout << "leftDepth: " << leftDepth << "\n";
-    std::cout << "rightDepth: " << rightDepth << std::endl;
     return leftDepth > rightDepth ? leftDepth : rightDepth;
 }
 
