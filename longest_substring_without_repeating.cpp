@@ -11,11 +11,12 @@ int lengthOfLongestSubstring(std::string s) {
 
     while (a < n && b < n) {
         if (set.find(s[b]) == set.end()) {
-            set.insert(s[b]);
-            b++;
+            std::cout << "added " << s[b] << " to the set" << std::endl;
+            set.insert(s[b++]);
             m = std::max(m, b - a);
         } else {
-            set.erase(s[b]);
+            std::cout << "removed " << s[a] << " from the set" << std::endl;
+            set.erase(s[a]);
             a++;
         }
     }
@@ -28,7 +29,11 @@ int main () {
     std::string test = "abcabcbb";
     int ans = lengthOfLongestSubstring(test);
 
+    std::string test2 = "pwwkew";
+    int ans2 = lengthOfLongestSubstring(test2);
+
     std::cout << ans << std::endl;
+    std::cout << ans2 << std::endl;
 
 
     return 0;
