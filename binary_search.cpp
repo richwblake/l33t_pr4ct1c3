@@ -6,13 +6,13 @@ int searchUtil (std::vector<int>& nums, int target, int l, int r) {
     int mid = (l + r) / 2;
     int num = nums[mid];
     if (num == target) return mid;
-    else if (num > target) return searchUtil(nums, target, l, mid - 1);
-    else return searchUtil(nums, target, mid + 1, r);
+    if (num > target) return searchUtil(nums, target, l, mid - 1);
+    if (num < target) return searchUtil(nums, target, mid + 1, r);
     return -1;
 }
 int search (std::vector<int>& nums, int target) {
     int n = nums.size();
-    return searchUtil(nums, target, 0, n);
+    return searchUtil(nums, target, 0, n - 1);
 }
 
 
